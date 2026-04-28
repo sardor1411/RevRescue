@@ -1,11 +1,12 @@
 'use client';
 
-import { motion, type Variants } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, type Variants } from 'framer-motion';
 import {
   SectionHeader,
   headerItem,
 } from '@/components/animations/FadeInUp';
-import { StarReveal } from '@/components/animations/StarReveal';
+import { StarFieldFlow } from '@/components/animations/StarFieldFlow';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -53,8 +54,14 @@ const cardVariants: Variants = {
 };
 
 export function Testimonials() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start 0.9', 'center center'],
+  });
+
   return (
-    <section id="testimonials" className="section">
+    <section id="testimonials" className="section" ref={containerRef}>
       <SectionHeader className="text-center">
         <motion.span className="section-label" variants={headerItem}>
           Real Results
@@ -75,7 +82,7 @@ export function Testimonials() {
         whileInView="show"
         viewport={{ once: true, margin: '-80px' }}
       >
-        {testimonials.map((t) => (
+        {testimonials.map((t, index) => (
           <motion.div
             key={t.name}
             className="testimonial-card"
@@ -90,7 +97,7 @@ export function Testimonials() {
             }}
             style={{ perspective: 800, transformStyle: 'preserve-3d' }}
           >
-            <StarReveal rating={t.stars} />
+            <StarFieldFlow progress={scrollYProgress} rating={t.stars} cardIndex={index} />
 
             <p className="testimonial-text">{t.quote}</p>
 
