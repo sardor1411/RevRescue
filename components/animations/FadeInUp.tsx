@@ -17,7 +17,6 @@ interface FadeInUpProps {
   /** Animation duration. Default 0.65s */
   duration?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
 }
 
 export function FadeInUp({
