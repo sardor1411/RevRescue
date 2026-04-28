@@ -82,7 +82,7 @@ function FlyingStar({
       style={{
         position: 'absolute',
         top: 0, left: '50%',
-        x: '-50%', // center anchor
+        // removed duplicate x: '-50%'
         fontSize: '3rem',
         color: '#fbbf24',
         scale, x, y, opacity, filter,
