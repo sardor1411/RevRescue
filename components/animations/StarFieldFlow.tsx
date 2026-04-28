@@ -70,6 +70,9 @@ function FlowingStar({
     ]
   );
 
+  const haloScale = useTransform(scale, s => s * 1.5);
+  const haloOpacity = useTransform(opacity, o => o * 0.6);
+
   if (prefersReduced || isMobile) {
     return (
       <motion.span 
@@ -95,8 +98,8 @@ function FlowingStar({
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(251,191,36,0.3) 0%, rgba(251,191,36,0) 70%)',
           x, y, 
-          scale: useTransform(scale, s => s * 1.5), 
-          opacity: useTransform(opacity, o => o * 0.6),
+          scale: haloScale, 
+          opacity: haloOpacity,
           zIndex: 9,
           willChange: 'transform, opacity'
         }}
