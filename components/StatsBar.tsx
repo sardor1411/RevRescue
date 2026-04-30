@@ -5,10 +5,10 @@ import { motion, useInView } from 'framer-motion';
 import { staggerContainer, fadeUp } from '@/lib/animations';
 
 const stats = [
-  { target: 2400, suffix: '+', label: 'Businesses Served' },
-  { target: 98,   suffix: '%', label: 'Client Satisfaction' },
+  { target: 13, suffix: '+', label: 'Businesses Served' },
+  { target: 86,   suffix: '%', label: 'Client Satisfaction' },
   { target: 4.8,  suffix: '★', label: 'Avg Rating Achieved', isFloat: true },
-  { target: 180,  suffix: '%', label: 'Avg Review Increase' },
+  { target: 174,  suffix: '%', label: 'Avg Review Increase' },
 ];
 
 function Counter({ target, suffix, isFloat }: { target: number; suffix: string; isFloat?: boolean }) {
